@@ -1,45 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Recette index{% endblock %}
+{% block title %}Liste des recettes{% endblock %}
 
 {% block body %}
-    <h1>Recette index</h1>
+    <h1>Liste des recettes</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Date</th>
-                <th>Preparation</th>
-                <th>Time</th>
-                <th>Ingredient</th>
-                <th>Image</th>
+                <th>Nom de la recette</th>
+                <th>Date de publication</th>
+                <th>Etapes de la préparation</th>
+                <th>Temps de cuisson</th>
+                <th>Ingrédients</th>
+                <th>Photo du plat</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for recette in recettes %}
             <tr>
-                <td>{{ recette.id }}</td>
                 <td>{{ recette.name }}</td>
-                <td>{{ recette.date }}</td>
+                <td>{{ recette.date | date('d-m-Y') }}</td>
                 <td>{{ recette.preparation }}</td>
                 <td>{{ recette.time }}</td>
                 <td>{{ recette.ingredient }}</td>
                 <td>{{ recette.image }}</td>
                 <td>
-                    <a href="{{ path('recette_show', {'id': recette.id}) }}">show</a>
-                    <a href="{{ path('recette_edit', {'id': recette.id}) }}">edit</a>
+                    <a href="{{ path('recette_show', {'id': recette.id}) }}">Afficher</a>
+                    <a href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="8">no records found</td>
+                <td colspan="8">Vous n'avez pas de recettes enregistrées</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('recette_new') }}">Create new</a>
+    <a href="{{ path('recette_new') }}">Créer une nouvelle recette</a>
 {% endblock %}

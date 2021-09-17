@@ -24,62 +24,63 @@ class RegistrationFormType extends AbstractType
         $builder
 
             ->add('email',EmailType::class,[
-                'label'=>'email',
+                'label'=>'Email',
                 'attr' =>[
                     'placeholder' =>'Entrez votre email'
                 ]
             ]) 
 
              ->add('lastname', TextType::class,[
-                 'label' => 'lastname',
+                 'label' => 'Nom de famille',
                  'attr' =>[
-                     'placeholder' =>'Votre nom'
+                     'placeholder' =>'Entrez votre nom de famille'
                  ]
              ]) 
              
              ->add('firstname', TextType::class,[
-                'label' => 'firstname',
+                'label' => 'Prénom',
                 'attr' =>[
-                    'placeholder' =>'Votre prénom'
+                    'placeholder' =>'Entrez votre prénom'
                 ]
             ])  
 
             ->add('birthday', BirthdayType::class,[
-                'label' => 'birthday',
+                'label' => 'Date de naissance',
                 'attr' =>[
-                    'placeholder' =>'Votre date de naissance'
+                    'placeholder' =>'Entrez votre date de naissance'
                 ]
             ])  
 
             ->add('city', TextType::class,[
-                'label' => 'city',
+                'label' => 'Ville',
                 'attr' =>[
-                    'placeholder' =>'Votre ville'
+                    'placeholder' =>'Indiquez votre ville'
                 ]
             ])  
 
             ->add('zipcode', TextType::class,[
-                'label' => 'zipcode',
+                'label' => 'Code postal',
                 'attr' =>[
-                    'placeholder' =>'Votre code postal'
+                    'placeholder' =>'Indiquez votre code postal'
                 ]
             ])  
 
             ->add('country', TextType::class,[
-                'label' => 'country',
+                'label' => 'Pays',
                 'attr' =>[
-                    'placeholder' =>'Votre pays'
+                    'placeholder' =>'Indiquez votre pays'
                 ]
             ])  
 
             ->add('pp', TextType::class,[
-                'label' => 'pp',
+                'label' => 'Avatar',
                 'attr' =>[
                     'placeholder' =>'Choisissez votre avatar'
                 ]
             ])  
 
             ->add('agreeTerms', CheckboxType::class, [
+                'label' => 'Accepter les conditions d\'utilisation du site',
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -91,6 +92,7 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
+                'label' => 'Mot de passe',
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password'],
                 'constraints' => [
@@ -99,7 +101,7 @@ class RegistrationFormType extends AbstractType
                     ]),
                     new Length([
                         'min' => 6,
-                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ 12 }} caractères',
+                        'minMessage' => 'Votre mot de passe doit comporter au moins {{ 8 }} caractères',
                         // max length allowed by Symfony for security reasons
                         'max' => 4096,
                     ]),
