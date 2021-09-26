@@ -1,0 +1,77 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href={{ path("home") }}><img src="{{ asset('assets/images/logo-nav.png') }}" alt="Logo MDM"></a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+
+    <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav mr-auto my-2 my-lg-0 navbar-nav-scroll" style="max-height: 100px;">
+            <li class="nav-item active">
+                <a class="nav-link" href={{ path("home") }}>Accueil <span class="sr-only"></span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href={{ path("recette_index") }}>Recettes <span class="sr-only"></span></a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href={{ path("article_index") }}>Articles <span class="sr-only"></span></a>
+            </li>            
+            {# <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href={{ path("recette_index") }} id="navbarScrollingDropdown"  role="button" data-toggle="dropdown" aria-expanded="false">Recettes</a> #}
+                {# <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href="#">Traditionnelles</a></li>
+                    <li><a class="dropdown-item" href="#">En vogue</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href={{ path("article_index") }} >Vos top recettes personnalisées</a></li>
+                </ul>
+            </li> #}
+
+            {# <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href={{ path("article_index") }}  id="navbarScrollingDropdown" role="button" data-toggle="dropdown" aria-expanded="false">Articles</a> #}
+                {# <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                    <li><a class="dropdown-item" href={{ path("article_show") }} >Remplacer les laitages</a></li>
+                    <li><a class="dropdown-item" href={{ path("article_show") }} >Remplacer la viande</a></li>
+                    <li><a class="dropdown-item" href={{ path("article_show") }} >Remplacer le gluten</a></li>
+                </ul> #}
+            {# </li> #}
+
+        <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href={{ path("app_login") }} id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Se connecter</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form class="dropdown-menu p-4">
+                    <div class="form-group">
+                        <div class="dropdown-item">
+                            <label for="exampleDropdownFormEmail2">Adresse E-mail</label>
+                            <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@exemple.com">
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-group">
+                            <label for="exampleDropdownFormPassword2">Mot de passe</label>
+                            <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Mot de passe">
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <div class="form-group">
+                            <div class="form-check">
+                                <input type="checkbox" class="form-check-input" id="dropdownCheck2">
+                                <label class="form-check-label" for="dropdownCheck2">
+                                    Se rappeler de moi
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown-item">
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                    </div>
+                </form>
+            </div>
+        </li>
+
+        <form class="d-flex">
+            <input class="form-control mr-2" type="search" placeholder="Rechercher sur le site" aria-label="Rechercher">
+            <button class="btn btn-outline-danger" type="submit">Rechercher</button>
+        </form>
+
+    </div>
+</nav>
