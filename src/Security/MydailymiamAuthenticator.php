@@ -51,7 +51,7 @@ class MydailymiamAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('recette_index'));
+        return new RedirectResponse($this->urlGenerator->generate('home'));
         
     }
 

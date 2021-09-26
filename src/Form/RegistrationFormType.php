@@ -44,6 +44,13 @@ class RegistrationFormType extends AbstractType
                 ]
             ])  
 
+            ->add('pseudo', TextType::class,[
+                'label' => 'Pseudo',
+                'attr' =>[
+                    'placeholder' =>'Entrez votre pseudo'
+                ]
+            ])  
+
             ->add('birthday', BirthdayType::class,[
                 'label' => 'Date de naissance',
                 'attr' =>[

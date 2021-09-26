@@ -85,6 +85,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $articles;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaire::class, mappedBy="auteur", orphanRemoval=true)
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $pseudo;
+
     public function __toString()
     {
         return $this->getEmail();
@@ -94,6 +104,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->recettes = new ArrayCollection();
         $this->articles = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -325,6 +336,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $article->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaire[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setAuteur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getAuteur() === $this) {
+                $commentaire->setAuteur(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPseudo(): ?string
+    {
+        return $this->pseudo;
+    }
+
+    public function setPseudo(string $pseudo): self
+    {
+        $this->pseudo = $pseudo;
 
         return $this;
     }
