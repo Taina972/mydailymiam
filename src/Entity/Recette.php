@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PrePersist;
 use App\Repository\RecetteRepository;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
@@ -56,7 +57,7 @@ class Recette
     private $user;
 
     /**
-     * @ORM/PrePersist
+     * @ORM\PrePersist
      */
     public function prePersist()
     {

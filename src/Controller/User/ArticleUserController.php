@@ -36,11 +36,8 @@ class ArticleUserController extends AbstractController
         $commentaire = new Commentaire();
         
         $form = $this->createForm(CommentaireType::class, $commentaire);
-        return $this->render('user/article/show.html.twig', [
-            'article' => $article,
-        ]);
-
         $form -> handleRequest($request);
+        
         if ($form->isSubmitted() && $form->isValid()) 
         {
             $commentaire->setArticle($article);
@@ -51,12 +48,11 @@ class ArticleUserController extends AbstractController
 
             return $this->redirectToRoute('article_user', ['id' => $id]);
         
-    
-            return $this->render('user/article/show.html.twig', [
-                'article' => $article,
-                'form' => $form->createView()
-            ]);
         }
 
+        return $this->render('user/article/show.html.twig', [
+            'article' => $article,
+            'form' => $form->createView()
+        ]);
     }
 }

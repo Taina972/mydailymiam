@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=CommentaireRepository::class)
- *  * @ORM\HasLifecycleCallbacks
+ * @ORM\HasLifecycleCallbacks
  */
 class Commentaire
 {
@@ -61,12 +61,12 @@ class Commentaire
     }
 
 
- /**
+    /**
      * @ORM\PrePersist
      */
     public function prePersist() {
         if(empty($this->createdAt)) {
-            $this->date = new DateTime();
+            $this->createdAt = new DateTime();
         }
     }
 

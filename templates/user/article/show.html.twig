@@ -29,20 +29,18 @@
 			{% if article.commentaires | length > 0 %}
 
 				{% for commentaire in article.commentaires %}
-					<p>
-						{% if app.user is same as commentaire.auteur %}
-							<style= "color:red"></style>
-						{% endif %}
+						
 
-					</p>
-					<p>Auteur :
+					<p {% if app.user is same as commentaire.auteur %}
+							<style= "color:red;"></style>
+						{% endif %} Auteur :
 						{{ commentaire.auteur.pseudo }}
 					</p>
 					<p>Posté le :
 						{{ commentaire.createdAt | date('d-m-Y H:i:s') }}
 					</p>
 					<p>Contenu :
-						{{ commentaire.content }}
+						{{ commentaire.contenu }}
 					</p>
 					<hr>
 
