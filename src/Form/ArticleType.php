@@ -19,15 +19,13 @@ class ArticleType extends AbstractType
              'label' => 'Nom de l\'article'
             ])
 
-
-
             ->add('content', TextareaType::class, [
              'label' => 'Contenu'
             ])
 
-            ->add('image', FileType::class, [
-             'label' => 'Images'
-
+            ->add('image_upload', FileType::class,[
+                'label' => "Image",
+                'mapped' => false,
             ])
         ;
     }

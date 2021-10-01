@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article
+{% endblock %}
+
+{% block body %}
+
+	<div class="row">
+
+		<div class="col-12 mt-3">
+			<h1 class="text-center">{{ article.name }}</h1>
+		</div>
+
+		<div class="col-12 mt-3">
+			Date de publication :
+			{{ article.date | date('d-m-Y') }}
+		</div>
+
+		<img class="w-50" src=" {{ asset(article.image)}} "/>
+
+		<div class="col-12 mt-3">
+			<p>{{ article.content | raw}}</p>
+		</div>
+
+		<div class="col-12 mt-3">
+			<h3 class="text-center">
+				Et vous, qu'en pensez-vous ?</h3>
+
+			{% if article.commentaires | length > 0 %}
+
+				{% for commentaire in article.commentaires %}
+					<p>
+						{% if app.user is same as commentaire.auteur %}
+							<style= "color:red"></style>
+						{% endif %}
+
+					</p>
+					<p>Auteur :
+						{{ commentaire.auteur.pseudo }}
+					</p>
+					<p>Posté le :
+						{{ commentaire.createdAt | date('d-m-Y H:i:s') }}
+					</p>
+					<p>Contenu :
+						{{ commentaire.content }}
+					</p>
+					<hr>
+
+				{% endfor %}
+
+			{% else %}
+				<p>Il n'y a pas encore de commentaires.</p>
+
+			{% endif %}
+
+		</div>
+
+		{% if app.user %}
+			{{ form_start(form) }}
+
+			{{ form_widget(form) }}
+
+			<button class="btn btn-sm btn-outline-danger mt-3">Envoyer</button>
+
+			{{ form_end(form) }}
+
+
+		{% else %}
+			<p>Vous devez vous
+				<a href="{{ path('app_login') }}">Connecter</a>
+				pour poster un commentaire.</p>
+			<p>Pas encore de compte ?
+				<a class="btn btn-sm btn-secondary" href="{{ path('app_register') }}">Créez-le dès à présent !</a>
+			</p>
+
+		{% endif %}
+
+	</div>
+
+	<button class="btn btn-danger" href="{{ path('article_index') }}">Retour à la liste d'articles</button>
+
+{% endblock %}

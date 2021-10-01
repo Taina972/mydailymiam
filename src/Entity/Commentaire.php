@@ -2,11 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\CommentaireRepository;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\PrePersist;
+use App\Repository\CommentaireRepository;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=CommentaireRepository::class)
+ *  * @ORM\HasLifecycleCallbacks
  */
 class Commentaire
 {
@@ -54,6 +58,16 @@ class Commentaire
         $this->contenu = $contenu;
 
         return $this;
+    }
+
+
+ /**
+     * @ORM\PrePersist
+     */
+    public function prePersist() {
+        if(empty($this->createdAt)) {
+            $this->date = new DateTime();
+        }
     }
 
     public function getCreatedAt(): ?\DateTimeInterface

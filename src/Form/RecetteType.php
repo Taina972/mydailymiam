@@ -21,12 +21,7 @@ class RecetteType extends AbstractType
             ->add('name', TextType::class,[
                 'label' => 'Nom de la recette'
             ])
-
-            ->add('date', DateTimeType::class,[
-                'label' => 'Date de publication'
-            ])
-           
-           
+          
             ->add('preparation', TextareaType::class,[
                 'label' => 'Etapes de la préparation'
             ])
@@ -36,8 +31,9 @@ class RecetteType extends AbstractType
             ->add('ingredient', TextType::class,[
                 'label' => "Ingrédients"
             ])
-            ->add('image', FileType::class,[
-                'label' => "Plat"
+            ->add('image_upload', FileType::class,[
+                'label' => "Image",
+                'mapped' => false,
             ])
         ;
     }

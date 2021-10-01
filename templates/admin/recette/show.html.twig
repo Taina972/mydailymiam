@@ -1,0 +1,34 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+    <h1>{{ recette.name }}</h1>
+
+    <div class="col-12">Date de publication : {{ recette.date | date('d-m-Y') }}</div>
+
+    <img class="w-50" src=" {{ asset(recette.image)}} "/>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Temps de cuisson</th>
+                <td>{{ recette.time }}</td>
+            </tr>
+            <tr>
+                <th>Ingrédients</th>
+                <td>{{ recette.ingredient }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h2>Etapes de la préparation</h2>
+        <p>{{ recette.preparation }}</p>
+    </div>
+
+    <a class="btn btn-danger" href="{{ path('recette_index') }}">Retour à la liste des recettes</a>
+
+    <a class="btn btn-outline-danger btn-sm" href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
+
+    {{ include('admin/recette/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des recettes{% endblock %}
+
+{% block body %}
+    <h1>Liste des recettes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom de la recette</th>
+                <th>Date de publication</th>
+                <th>Etapes de la préparation</th>
+                <th>Temps de cuisson</th>
+                <th>Ingrédients</th>
+                <th>Photo du plat</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recette in recettes %}
+            <tr>
+                <td>{{ recette.name }}</td>
+                <td>{{ recette.date | date('d-m-Y') }}</td>
+                <td>{{ recette.preparation }}</td>
+                <td>{{ recette.time }}</td>
+                <td>{{ recette.ingredient }}</td>
+                <td> <img src="{{ asset(recette.image) }}" style="height:20px; object-fit:contain;"/></td>
+                <td>
+                    <a class="btn btn-sm btn-outline-danger" href="{{ path('recette_user_show', {'id': recette.id}) }}">Afficher</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">L'admin n'a publié aucune recette</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

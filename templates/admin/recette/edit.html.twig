@@ -1,0 +1,13 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Modifier une recette{% endblock %}
+
+{% block body %}
+    <h1>Modifiez votre recette</h1>
+
+    {{ include('admin/recette/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+    <a class="btn btn-danger" href="{{ path('recette_index') }}">Retour à la liste des recettes</a>
+
+    {{ include('admin/recette/_delete_form.html.twig') }}
+{% endblock %}

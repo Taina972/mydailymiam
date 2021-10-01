@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recettes{% endblock %}
+
+{% block body %}
+    <h1>{{ recette.name }}</h1>
+
+    Date de publication : {{ recette.date | date('d-m-Y') }}
+
+    <img class="w-50" src=" {{ asset(recette.image)}} "/>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Temps de cuisson</th>
+                <td>{{ recette.time }}</td>
+            </tr>
+            <tr>
+                <th>Ingrédients</th>
+                <td>{{ recette.ingredient }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h2>Etapes de la préparation</h2>
+        <p>{{ recette.preparation }}</p>
+    </div>
+
+    <a class="btn btn-danger" href="{{ path('recette_user') }}">Retour à la liste des recettes</a>
+
+{% endblock %}

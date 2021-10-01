@@ -1,0 +1,40 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <!-- Bannière -->
+    <section class="banniere">
+        <div class="card bg-white text-black">
+            <img src="{{ asset('assets/images/banniere_admin.jpg') }}" class="card-img" alt="banniere">
+            <div class="card-img-overlay">
+                <h5 class="card-title">Coin admin de <span class="MyDailyMiam">My Daily Miam</span></h5>
+                <p class="card-text2"><span>Qu'avons-nous au menu aujourd'hui ?</span></p>
+            </div>
+        </div>
+    </section>
+    
+    <div class="container mb-12">
+
+        <div class="center mt-3">
+            <div class="col-12">
+                <div class="card">
+                    <img src="{{ asset('assets/images/CreerRecette.jpg') }}" class="card-img-top" alt="Lasagnes">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste des recettes</h5>
+                        {# <a type="submit" class="btn btn-outline-danger" href="{{ path('recette_user_show', {'id':}) }}">Accéder</a> #}
+                    </div>
+                </div>
+            
+                <div class="card">
+                    <img src="{{ asset('assets/images/CreerArticle.jpg') }}" class="card-img-top" alt="Pokebowl">
+                    <div class="card-body">
+                        <h5 class="card-title">Liste des articles</h5>
+                        {# <a type="submit" class="btn btn-outline-danger" href="{{ path('article_user_show', {'id': article.id}) }}">Accéder</a> #}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

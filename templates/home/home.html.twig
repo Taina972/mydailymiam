@@ -48,43 +48,43 @@
 
     <!-- Recettes -->
     <div class="container mb-5">
+
         <h1 class=" text-center">Les recettes préférées de la communauté</h1>
 
-        <div class="card-deck mt-3">
-            <div class="card">
-                <img src="{{ asset('assets/images/lasagnes.jpg') }}" class="card-img-top" alt="Lasagnes">
-                <div class="card-body">
-                    <h5 class="card-title">Lasagnes</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to
-                        additional
-                        content. This content is a little bit longer.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+        <div class="row mt-3">
+            {% for recette in recettes %}
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <img src="{{ asset(recette.image) }}" class="card-img-top" alt="Photo">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ recette.name }} </h5>
+                            <p class="card-text"><small class="text-muted"> {{ recette.date | date('d-m-Y')}} </small></p>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('assets/images/pokebowl.jpg') }}" class="card-img-top" alt="Pokebowl">
-                <div class="card-body">
-                    <h5 class="card-title">Poké Bowl</h5>
-                    <p class="card-text">This card has supporting text below as a natural lead-in to additional content.
-                    </p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{{ asset('assets/images/gateaux.jpg') }}" class="card-img-top" alt="Gâteaux">
-                <div class="card-body">
-                    <h5 class="card-title">Gâteaux</h5>
-                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                        additional
-                        content. This card has even longer content than the first to show that equal height action.</p>
-                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                </div>
-            </div>
+                
+            {% endfor %}
         </div>
+
+        <div class="row mt-3">
+            {% for article in articles %}
+                <div class="col-12 col-md-3">
+                    <div class="card">
+                        <img src="{{ asset(article.image) }}" class="card-img-top" alt="Photo">
+                        <div class="card-body">
+                            <h5 class="card-title"> {{ article.name }} </h5>
+                            <p class="card-text"><small class="text-muted"> {{ article.date | date('d-m-Y')}} </small></p>
+                        </div>
+                    </div>
+                </div>
+                
+            {% endfor %}
+        </div>                   
+        
     </div>
 
     <!-- Contact -->
-    <section class="m-auto col-md-5 text-center">
+    {# <section class="m-auto col-md-5 text-center">
         <form id="contact">
             <div class="form-group">
                 <label for="exampleFormControlInput1">Adresse Email</label>
@@ -107,7 +107,7 @@
             <button class="btn btn-outline-danger" id="envoyer" type="submit" onclick="envoyer()"
                 required>Envoyer</button>
         </form>
-    </section>
+    </section> #}
 
 
     <footer class="m-5">

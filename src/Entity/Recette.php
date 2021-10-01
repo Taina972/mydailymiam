@@ -56,7 +56,7 @@ class Recette
     private $user;
 
     /**
-     * @ORM\PrePersist
+     * @ORM/PrePersist
      */
     public function prePersist()
     {

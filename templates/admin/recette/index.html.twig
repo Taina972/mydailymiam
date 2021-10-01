@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_admin.html.twig' %}
 
 {% block title %}Liste des recettes{% endblock %}
 
@@ -25,10 +25,10 @@
                 <td>{{ recette.preparation }}</td>
                 <td>{{ recette.time }}</td>
                 <td>{{ recette.ingredient }}</td>
-                <td>{{ recette.image }}</td>
+                <td> <img src="{{ asset(recette.image) }}" style="height:100px; object-fit:contain;"/></td>
                 <td>
-                    <a href="{{ path('recette_show', {'id': recette.id}) }}">Afficher</a>
-                    <a href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
+                    <a class="btn btn-sm btn-outline-danger" href="{{ path('recette_show', {'id': recette.id}) }}">Afficher</a>
+                    <a class="btn btn-sm btn-outline-danger" href="{{ path('recette_edit', {'id': recette.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}
@@ -39,5 +39,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('recette_new') }}">Créer une nouvelle recette</a>
+    <a class="btn btn-danger" href="{{ path('recette_new') }}">Créer une nouvelle recette</a>
 {% endblock %}

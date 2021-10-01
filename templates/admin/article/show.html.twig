@@ -1,0 +1,56 @@
+{% extends 'base_admin.html.twig' %}
+
+{% block title %}Article{% endblock %}
+
+{% block body %}
+
+    <div class="row">
+
+        <div class="col-12 mt-3">
+            <h1 class="text-center">{{ article.name }}</h1>
+        </div>
+
+        <div class="col-12 mt-3"> 
+            Date de publication : {{ article.date | date('d-m-Y') }} 
+        </div>
+
+        <div>
+    <img class="w-50" src=" {{ asset(article.image)}} "/>
+        </div>
+
+        <div class="col-12 mt-3">
+            <p>{{ article.content | raw}}</p>
+        </div>
+
+        <div class="col-12 mt-3">
+            <h3 class="text-center"> Et vous, qu'en pensez-vous ?</h3>
+            
+            {% if article.commentaires | length > 0 %}
+
+                {% for commentaire in article.commentaires %}
+                {% endfor %}
+
+            {% else %}
+                <p>Il n'y a pas encore de commentaires.</p>
+
+            {% endif %}
+
+        </div>
+            {% if app.user %}
+            
+            {% else %}
+                <p>Vous devez vous <a href="{{ path('app_login') }}">Connecter</a> pour poster un commentaire.</p>
+                <p>Pas encore de compte ? <a href="{{ path('app_register') }}">Créez-le dès à présent !</a></p>
+
+            {% endif %}
+        <div>
+        
+        </div>
+    </div>
+
+    <a class="btn btn-danger" href="{{ path('article_index') }}">Retour à la liste d'articles</a>
+
+    <a class="btn btn-outline-danger btn-sm" href="{{ path('article_edit', {'id': article.id}) }}">Modifier</a>
+
+    {{ include('admin/article/_delete_form.html.twig') }}
+{% endblock %}
