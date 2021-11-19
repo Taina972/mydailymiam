@@ -90,7 +90,7 @@ class RecetteController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'recette_delete', methods: ['POST'])]
+    #[Route('/delete/recette/{id}', name: 'recette_delete', methods: ['POST'])]
     public function delete(Request $request, Recette $recette, ImageService $imageService): Response
     {
         if ($this->isCsrfTokenValid('delete'.$recette->getId(), $request->request->get('_token'))) {
